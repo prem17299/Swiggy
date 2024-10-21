@@ -1,22 +1,22 @@
 export const Shimmer = () => {
   return (
-    <div className="shimmer-container">
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
-      <div className="shimmer-cards"></div>
+    <div className="flex flex-wrap">
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
+      <div className="m-5 h-[450px] w-[200px] bg-gray-200"></div>
     </div>
   );
 };

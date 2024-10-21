@@ -8,13 +8,13 @@ export const RestaurantCard = ({
   cloudinaryImageId,
 }) => {
   return (
-    <div className="res-card">
+    <div className="m-3 p-1 w-[250px] h-[400px] bg-gray-200 hover:bg-gray-400 rounded-lg">
       <img
-        className="res-logo"
+        className="w-[250px] h-[150px] object-cover rounded-lg"
         alt="res-logo"
         src={CDN_URL + cloudinaryImageId}
       />
-      <h3>{name}</h3>
+      <h3 className="font-bold text-lg py-4">{name}</h3>
       <h4>Cuisines: {cuisines.join(", ")}</h4>
       <h4>Average Rating: {avgRating} ⭐</h4>
       <h4>Cost for Two: {costForTwo}</h4>

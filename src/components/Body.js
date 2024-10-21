@@ -21,17 +21,17 @@ export const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
+      <div className="search m-4 p-4">
         <input
           type="text"
-          className="search-box"
+          className="border border-solid border-black"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
         <button
-          className="filter-btn"
+          className="px-4 py-1 bg-green-200 hover:bg-green-400 cursor-pointer m-4 rounded-lg"
           onClick={() => {
             const filteredList = listOfRestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -42,7 +42,7 @@ export const Body = () => {
           Search
         </button>
         <button
-          className="filter-btn"
+          className="px-4 py-1 bg-gray-200 hover:bg-gray-400 cursor-pointer mx-24 rounded-lg"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4.2
@@ -53,7 +53,7 @@ export const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredListOfRestaurants.map((restaurant) => (
           <Link
             to={"/restaurant/" + restaurant.info.id}

@@ -7,27 +7,27 @@ export const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={headerLogoUrl} />
+    <div className="flex justify-between items-center border border-black h-20 bg-blue-200 shadow-lg">
+      <div className="flex item-center">
+        <img className="w-20" src={headerLogoUrl} />
       </div>
       <div className="nav-items">
-        <ul>
-          <li>Online status : {onlineStatus ? "✅" : "🔴"}</li>
-          <li>
+        <ul className="flex m-4 p-4">
+          <li className="px-4">Online status : {onlineStatus ? "✅" : "🔴"}</li>
+          <li className="px-4 hover:bg-blue-400">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4 hover:bg-blue-400">
             <Link to="/about"> About us</Link>
           </li>
-          <li>
+          <li className="px-4 hover:bg-blue-400">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4 hover:bg-blue-400">
             <Link to="/grocery">Grocery</Link>
           </li>
           <button
-            className="login-btn"
+            className="mx-4 cursor-pointer hover:bg-blue-400"
             onClick={() => {
               btnName === "login" ? setBtnName("logout") : setBtnName("login");
             }}
