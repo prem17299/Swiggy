@@ -1,4 +1,4 @@
-import { RestaurantCard } from "./RestaurantCard";
+import { RestaurantCard, withComponentLabel } from "./RestaurantCard";
 import { useState } from "react";
 import { Shimmer } from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -16,6 +16,8 @@ export const Body = () => {
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return <h1>Looks Like Your Offline!! , Your Internet is down</h1>;
+
+  const RestaurantCardPromoted = withComponentLabel(RestaurantCard);
 
   return listOfRestaurants?.length === 0 ? (
     <Shimmer />
@@ -59,14 +61,25 @@ export const Body = () => {
             to={"/restaurant/" + restaurant.info.id}
             key={restaurant.info.id}
           >
-            <RestaurantCard
-              name={restaurant.info.name}
-              cuisines={restaurant.info.cuisines}
-              avgRating={restaurant.info.avgRating}
-              costForTwo={restaurant.info.costForTwo}
-              deliveryTime={restaurant.info.sla.deliveryTime}
-              cloudinaryImageId={restaurant.info.cloudinaryImageId}
-            />
+            {restaurant.info.aggregatedDiscountInfoV2 ? (
+              <RestaurantCard
+                name={restaurant.info.name}
+                cuisines={restaurant.info.cuisines}
+                avgRating={restaurant.info.avgRating}
+                costForTwo={restaurant.info.costForTwo}
+                deliveryTime={restaurant.info.sla.deliveryTime}
+                cloudinaryImageId={restaurant.info.cloudinaryImageId}
+              />
+            ) : (
+              <RestaurantCardPromoted
+                name={restaurant.info.name}
+                cuisines={restaurant.info.cuisines}
+                avgRating={restaurant.info.avgRating}
+                costForTwo={restaurant.info.costForTwo}
+                deliveryTime={restaurant.info.sla.deliveryTime}
+                cloudinaryImageId={restaurant.info.cloudinaryImageId}
+              />
+            )}
           </Link>
         ))}
       </div>
