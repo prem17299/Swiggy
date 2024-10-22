@@ -35,7 +35,7 @@ export const RestaurantMenu = () => {
         Cuisines - {cuisines?.join(", ")}
       </p>
       <p className="font-bold text-lg w-6/12 rounded-lg shadow-lg p-4 m-auto bg-green-300 my-4">
-        Average Cost for Two - Rs {costForTwo / 100}
+        Average Cost for Two - ₹ {costForTwo / 100}
       </p>
       <div className="border border-solid bg-slate-600">
         {categories.length > 0 ? (
