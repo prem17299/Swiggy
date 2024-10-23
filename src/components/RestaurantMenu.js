@@ -27,17 +27,18 @@ export const RestaurantMenu = () => {
     ) || [];
 
   return (
-    <div className="text-center border border-solid  bg-slate-300">
-      <h1 className="font-bold my-8 text-2xl bg-pink-300 w-6/12 rounded-lg shadow-lg p-4 m-auto my-4">
-        {name}
-      </h1>
-      <p className="font-bold text-lg w-6/12 rounded-lg shadow-lg p-4 m-auto bg-green-300 my-4">
-        Cuisines - {cuisines?.join(", ")}
-      </p>
-      <p className="font-bold text-lg w-6/12 rounded-lg shadow-lg p-4 m-auto bg-green-300 my-4">
-        Average Cost for Two - ₹ {costForTwo / 100}
-      </p>
-      <div className="border border-solid bg-slate-600">
+    <div className="bg-gray-100 py-6">
+      <div className="text-center bg-white shadow-lg rounded-lg p-6 w-3/4 mx-auto">
+        <h1 className="font-bold text-3xl mb-4 text-gray-800">{name}</h1>
+        <p className="text-lg font-semibold text-gray-600">
+          Cuisines: {cuisines?.join(", ")}
+        </p>
+        <p className="text-lg font-semibold text-gray-600">
+          Average Cost for Two: ₹ {costForTwo / 100}
+        </p>
+      </div>
+
+      <div className="w-3/4 mx-auto mt-6 bg-white rounded-lg shadow-lg p-6">
         {categories.length > 0 ? (
           categories.map((category, index) => (
             <RestaurantCategory
@@ -50,7 +51,7 @@ export const RestaurantMenu = () => {
             />
           ))
         ) : (
-          <p className="bg-red-300 font-bold text-lg"> Currently Closed</p>
+          <p className="text-center text-red-500 font-bold">Currently Closed</p>
         )}
       </div>
     </div>

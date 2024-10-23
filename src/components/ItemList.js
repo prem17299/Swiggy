@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CDN_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/slices/cartSlice";
 
 export const ItemList = ({ data }) => {
   const dispatch = useDispatch();
+  const [addedItem, setAddedItem] = useState(null);
+
   const handleAddItem = (item) => {
     dispatch(addItem(item));
+    setAddedItem(item.card.info.name);
   };
+
+  useEffect(() => {
+    if (addedItem) {
+      const timer = setTimeout(() => {
+        setAddedItem(null);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [addedItem]);
+
   if (!data || data.length === 0) {
     return (
       <div className="text-center font-bold text-red-500 my-4">
@@ -18,6 +31,12 @@ export const ItemList = ({ data }) => {
 
   return (
     <div>
+      {addedItem && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white p-2 rounded shadow-lg z-50">
+          {addedItem} added successfully!
+        </div>
+      )}
+
       {data.map((item) => (
         <div
           key={item.card.info.id}
@@ -25,8 +44,8 @@ export const ItemList = ({ data }) => {
         >
           <div className="w-9/12">
             <div className="py-2">
-              <span>{item.card.info.name}</span>
-              <span className="m-2">₹{item.card.info.price}</span>
+              <span className="font-bold">{item.card.info.name}</span>
+              <span className="m-2">₹{item.card.info.price / 100}</span>
             </div>
             <p className="text-xs">
               <span>{item.card.info.description}</span>
@@ -34,15 +53,17 @@ export const ItemList = ({ data }) => {
           </div>
           {item.card.info.imageId && (
             <div className="w-3/12 p-4">
-              <div className="absolute">
-                <button
-                  className="p-2 mx-16 rounded-lg shadow-lg bg-black text-white"
-                  onClick={() => handleAddItem(item)}
-                >
-                  +Add
-                </button>
-              </div>
-              <img src={CDN_URL + item.card.info.imageId} className="w-full" />
+              <button
+                className="p-2 mx-16 rounded-lg shadow-lg bg-black text-white"
+                onClick={() => handleAddItem(item)}
+              >
+                +Add
+              </button>
+              <img
+                src={CDN_URL + item.card.info.imageId}
+                alt={item.card.info.name}
+                className="w-full"
+              />
             </div>
           )}
         </div>
