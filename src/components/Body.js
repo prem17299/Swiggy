@@ -37,7 +37,7 @@ export const Body = () => {
         <button
           className="px-4 py-1 bg-green-200 hover:bg-green-400 cursor-pointer m-4 rounded-lg"
           onClick={() => {
-            const filteredList = listOfRestaurants.filter((res) =>
+            const filteredList = listOfRestaurants?.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
             setFilteredListOfRestaurants(filteredList);
@@ -48,7 +48,7 @@ export const Body = () => {
         <button
           className="px-4 py-1 bg-gray-200 hover:bg-gray-400 cursor-pointer mx-24 rounded-lg"
           onClick={() => {
-            const filteredList = listOfRestaurants.filter(
+            const filteredList = listOfRestaurants?.filter(
               (res) => res.info.avgRating > 4.2
             );
             setFilteredListOfRestaurants(filteredList);
@@ -64,7 +64,7 @@ export const Body = () => {
         />
       </div>
       <div className="flex flex-wrap">
-        {filteredListOfRestaurants.map((restaurant) => (
+        {filteredListOfRestaurants?.map((restaurant) => (
           <Link
             to={"/restaurant/" + restaurant.info.id}
             key={restaurant.info.id}

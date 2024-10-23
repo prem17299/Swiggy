@@ -1,7 +1,13 @@
 import React from "react";
 import { CDN_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/slices/cartSlice";
 
 export const ItemList = ({ data }) => {
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
   if (!data || data.length === 0) {
     return (
       <div className="text-center font-bold text-red-500 my-4">
@@ -29,7 +35,10 @@ export const ItemList = ({ data }) => {
           {item.card.info.imageId && (
             <div className="w-3/12 p-4">
               <div className="absolute">
-                <button className="p-2 mx-16 rounded-lg shadow-lg bg-black text-white">
+                <button
+                  className="p-2 mx-16 rounded-lg shadow-lg bg-black text-white"
+                  onClick={() => handleAddItem(item)}
+                >
                   +Add
                 </button>
               </div>
