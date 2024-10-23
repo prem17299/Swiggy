@@ -44,8 +44,8 @@ export const Header = () => {
           </li>
           <li className="flex items-center font-bold text-lg px-2 hover:text-blue-500">
             <BsCart3 className="mr-2" />
-            <Link to="/cart">Cart ({cartItems.length})</Link>
-          </li>
+            <Link to="/cart">Cart ({cartItems.length} {cartItems.length === 1 ? 'Item' : 'Items'})</Link>
+            </li>
         </ul>
       </div>
 
