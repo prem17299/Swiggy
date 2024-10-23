@@ -1,4 +1,5 @@
 import { CDN_URL } from "../utils/constants";
+
 export const RestaurantCard = ({
   name,
   cuisines,
@@ -8,26 +9,33 @@ export const RestaurantCard = ({
   cloudinaryImageId,
 }) => {
   return (
-    <div className="m-3 p-1 w-[250px] h-[400px] bg-gray-200 hover:bg-gray-400 rounded-lg">
+    <div className="m-3 p-4 w-[250px] h-[350px] bg-white hover:bg-gray-50 rounded-lg shadow-lg transition-all duration-300">
       <img
-        className="w-[250px] h-[150px] object-cover rounded-lg"
+        className="p-2 w-full h-[150px] object-cover rounded-t-lg"
         alt="res-logo"
         src={CDN_URL + cloudinaryImageId}
       />
-      <h3 className="font-bold text-lg py-4">{name}</h3>
-      <h4>Cuisines: {cuisines.join(", ")}</h4>
-      <h4>Average Rating: {avgRating} ⭐</h4>
-      <h4>Cost for Two: {costForTwo}</h4>
-      <h4>Delivery Time: {deliveryTime} mins</h4>
+      <div className="p-2">
+        <h3 className="font-bold text-lg py-2 text-gray-800">{name}</h3>
+        <p className="text-sm text-gray-600 truncate">{cuisines.join(", ")}</p>
+        <div className="flex justify-between items-center text-sm font-medium text-gray-700 mt-2">
+          <span className="bg-green-600 text-white py-1 px-2 rounded-lg">
+            {avgRating} ⭐
+          </span>
+          <span>{deliveryTime} mins</span>
+        </div>
+        <div className="text-gray-600 text-sm mt-1">
+          <span>Cost for Two: ₹{costForTwo}</span>
+        </div>
+      </div>
     </div>
   );
 };
-
 export const withComponentLabel = (RestaurantCard) => {
   return (props) => {
     return (
-      <div>
-        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
+      <div className="relative">
+        <label className="absolute bg-black text-white text-xs py-1 px-2 rounded-lg top-2 left-2">
           Promoted
         </label>
         <RestaurantCard {...props} />
